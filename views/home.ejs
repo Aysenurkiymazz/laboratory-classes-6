@@ -5,9 +5,25 @@
   </head>
   <body>
     <main>
-      <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
-      activeLinkPath, cartCount: cartCount }); %>
+      <%- include('partials/navigation', {
+        menuLinks: menuLinks,
+        activeLinkPath: activeLinkPath,
+        cartCount: cartCount
+      }); %>
+
       <h1 class="heading">Home</h1>
+
+      <div class="hero-image">
+        <img
+  src="https://cdn.pixabay.com/photo/2023/08/30/17/16/ai-generated-8223819_1280.jpg"
+          alt="Meyve Sepeti"
+          style="width: 100%; max-width: 800px; display: block; margin: 20px auto; border-radius: 10px;"
+        />
+        <p style="text-align: center; font-size: 1.3rem; color: #333; margin-top: 15px;">
+          Welcome! 
+Buy fresh and tasty fruits — start shopping now! 🍎🍌🍓
+        </p>
+      </div>
     </main>
   </body>
 </html>

@@ -7,23 +7,47 @@
   </head>
   <body>
     <main>
-      <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
-      activeLinkPath, cartCount: cartCount }); %>
+      <%- include('partials/navigation', {
+        menuLinks,
+        activeLinkPath,
+        cartCount
+      }); %>
+
       <h1 class="heading"><%= product.name %></h1>
-      <div><%= product.description %></div>
-      <button onclick="deleteProduct('<%= product.name %>')">Delete</button>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <img
+          src="<%= product.imageUrl %>"
+          alt="<%= product.name %>"
+          style="max-width: 400px; width: 100%; border-radius: 10px;"
+        />
+      </div>
+
+      <p style="text-align: center; margin: 10px 0;">
+        <strong>Description:</strong> <%= product.description %><br />
+        <strong>Price:</strong> <%= product.price %> zł
+      </p>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <form action="/products/<%= product.name %>/add-to-cart" method="POST">
+          <button type="submit">Add to Cart</button>
+        </form>
+      </div>
+
+      <div style="text-align: center; margin-top: 10px;">
+        <button onclick="deleteProduct('<%= product.name %>')">Delete</button>
+      </div>
     </main>
+
     <script>
       function deleteProduct(name) {
-        if (!confirm(`Are you sure you want to remove ${name}?`)) {
-          return;
-        }
+        if (!confirm(`Are you sure you want to remove ${name}?`)) return;
 
         fetch(`/products/${name}`, {
           method: "DELETE",
         }).then((response) => {
           if (response.ok) {
-            window.location.reload();
+            window.location.href = "/products";
           } else {
             alert("Error while removing product.");
           }

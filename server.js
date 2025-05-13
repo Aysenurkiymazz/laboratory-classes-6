@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const { PORT } = require("./config");
 const logger = require("./utils/logger");
 const productsRoutes = require("./routing/products");
+const cartRoutes = require("./routing/cart"); // ✅ EKLENDİ
 const logoutRoutes = require("./routing/logout");
 const killRoutes = require("./routing/kill");
 const homeRoutes = require("./routing/home");
@@ -22,15 +23,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((request, _response, next) => {
   const { url, method } = request;
-
   logger.getInfoLog(url, method);
   next();
 });
 
+// ROUTES
 app.use("/products", productsRoutes);
+app.use("/cart", cartRoutes); // ✅ BURASI EKLENDİ
 app.use("/logout", logoutRoutes);
 app.use("/kill", killRoutes);
 app.use(homeRoutes);
+
+// 404 handler
 app.use((request, response) => {
   const { url } = request;
   const cartCount = cartController.getProductsCount();
@@ -41,6 +45,7 @@ app.use((request, response) => {
     activeLinkPath: "",
     cartCount,
   });
+
   logger.getErrorLog(url);
 });
 

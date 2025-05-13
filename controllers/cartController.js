@@ -1,15 +1,21 @@
 const Product = require("../models/Product");
-const Cart = require("../models/Cart");
+const cart = [];
 
-const { STATUS_CODE } = require("../constants/statusCode");
+exports.addProductToCart = (req, res) => {
+  const { name } = req.params;
+  const product = Product.findByName(name);
 
-exports.addProductToCart = (request, response) => {
-  Product.add(request.body);
-  Cart.add(request.body.name);
+  if (product && !cart.find(p => p.name === product.name)) {
+    cart.push(product); // aynı ürün birden fazla eklenmesin
+  }
 
-  response.status(STATUS_CODE.FOUND).redirect("/products/new");
+  res.redirect("/cart");
 };
 
-exports.getProductsCount = () => {
-  return Cart.getProductsQuantity();
+exports.getCartItems = () => cart;
+
+exports.getProductsCount = () => cart.length;
+
+exports.clearCart = () => {
+  cart.length = 0;
 };

@@ -1,35 +1,26 @@
-class Product {
-  constructor(name, description, price) {
-    this.name = name;
-    this.description = description;
-    this.price = price;
-  }
+const products = [];
 
-  static #products = [];
-
+module.exports = class Product {
   static getAll() {
-    return this.#products;
-  }
-
-  static add(product) {
-    this.#products.push(product);
-  }
-
-  static findByName(name) {
-    return this.#products.find((product) => product.name === name);
-  }
-
-  static deleteByName(name) {
-    this.#products = this.#products.filter((product) => product.name !== name);
+    return products;
   }
 
   static getLast() {
-    if (!this.#products.length) {
-      return;
-    }
-
-    return this.#products[this.#products.length - 1];
+    return products[products.length - 1];
   }
-}
 
-module.exports = Product;
+  static findByName(name) {
+    return products.find((p) => p.name.toLowerCase() === name.toLowerCase());
+  }  
+
+  static deleteByName(name) {
+    const index = products.findIndex(p => p.name === name);
+    if (index !== -1) {
+      products.splice(index, 1);
+    }
+  }
+
+  static add(product) {
+    products.push(product);
+  }
+};

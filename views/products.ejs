@@ -8,7 +8,7 @@
       <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
       activeLinkPath, cartCount: cartCount }); %>
       <h1 class="heading">Products</h1>
-      <% if (products?.length > 0) { %>
+      <% if (products && products.length > 0) { %>
       <ul>
         <% products.forEach(product => { %>
         <li><%- include('partials/card', { product: product }); %></li>
