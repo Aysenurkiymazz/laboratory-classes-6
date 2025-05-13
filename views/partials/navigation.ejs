@@ -13,8 +13,7 @@
       <% }); %>
     <% } %>
 
-    <!-- Cart bağlantısı eklendi -->
-    <li class="navigation__item navigation__cart">
+   <li class="navigation__item navigation__cart">
       <a href="/cart" class="navigation__link">
         Cart
         <img
@@ -22,7 +21,9 @@
           alt="Cart"
           class="navigation__icon"
         />
-        <span class="navigation__badge"><%= cartCount %></span>
+        <% if (cartCount > 0) { %>
+          <span class="navigation__badge"><%= cartCount %></span>
+        <% } %>
       </a>
     </li>
   </ul>
