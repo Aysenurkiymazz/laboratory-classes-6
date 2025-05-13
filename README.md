@@ -1,45 +1,55 @@
-# Pomocnicy
+Aplikacja Fruit Shop
+Ten projekt to prosta aplikacja sklepu owocowego. Użytkownicy mogą przeglądać produkty, dodawać je do koszyka oraz zobaczyć ostatnio dodany produkt. Aplikacja została stworzona w oparciu o Express.js i może być uruchomiona jako aplikacja desktopowa przy użyciu Electron.
 
-W trakcie pracy nad zadaniami (ćwiczeniami), będziecie spotykać się z różnymi pomocnikami, którzy będą wskazywać, co należy zrobić w danym fragmencie kodu. Im dalsze ćwiczenie, tym rzadziej będą się pojawiać. Oto krótka charakterystyka każdego z nich:
+📦 Instalacja
+bash
+Copy
+Edit
+git clone 
+cd nazwa-projektu
+npm install
 
-### 🔧 _Configo The Setter_ - **Konfiguracja aplikacji**
+🚀 Uruchamianie
+W przeglądarce:
+bash
+Copy
+Edit
+npm start
+Otwórz przeglądarkę i przejdź do http://localhost:3000.
 
-Pokazuje miejsca w których powinny zostać zdefiniowane elementy związane z ustawieniem aplikacji, takie jak port, zmienne środowiskowe, itp.
+Jako aplikacja desktopowa (Electron):
+bash
+Copy
+Edit
+npm run electron
+Okno aplikacji otworzy się automatycznie.
 
-_Przykład:_ **Zdefiniuj stałą PORT. Pamiętaj nadać jej wartość.**
+🧪 Funkcje
+✅ Dodawanie nowych produktów
 
-### 🧩 _Puzzlo the Missing Piece_ - **Brakujący element kodu**
+✅ Strona szczegółów produktu
 
-Pokazuje miejsca, gdzie należy dopisać fragment kodu, ponieważ go brakuje.
+✅ Dodawanie produktów do koszyka
 
-_Przykład:_ **Brakuje tutaj funkcji, wyliczającej sumę produktów w koszyku.**
+✅ Wyświetlanie ostatnio dodanego produktu
 
-### 🏗 _Structo the Builder_ - **Nowy kod, który trzeba dodać**
+✅ estetyczny interfejs
 
-Pokazuje miejsca, gdzie napisać nowy kod a czasami nawet, podpowiada fragment tego kodu.
+🗂️ Struktura projektu
+java
+Copy
+Edit
+├── views/               → Szablony EJS
+├── public/              → Style CSS i obrazy
+├── controllers/         → Logika tras
+├── routing/             → Pliki tras (routes)
+├── models/              → Dane produktów (w pamięci)
+├── utils/               → Funkcje pomocnicze
+├── main.js              → Główny plik Electron
+├── app.js / server.js   → Serwer Express
+├── package.json
 
-_Przykład:_ **Stwórz funkcję 'homeRouting', która obsłuży stronę główną.**
+🧠 Uwagi
+Obrazy produktów przypisywane są automatycznie na podstawie ich nazw. Dla nieznanych produktów wyświetlane jest domyślne zdjęcie owoców.
 
-### 🔥 _Crashy the Firestarter_ - **Błąd w kodzie, wymagający poprawy**
-
-Pokazuje miejsca występowania błędu w kodzie, tzw. _bug_.
-
-_Przykład:_ **Tutaj pojawia się błąd! Należy go naprawić, inaczej routing nie będzie działał!**
-
-### 🔄 _Refactoro the Changer_ - **Brakujący element kodu**
-
-Pokazuje miejsca, gdzie aktualna implementacja jest nieczytelna, mało wydajna lub po prostu przestarzała i nie wystarczająca na aktualne potrzeby.
-
-_Przykład:_ **Funkcja 'createNewProduct' otrzymuje dodatkowo z formularza kwotę produktu. Nie ma potrzeby tworzyć cenę za pomocą 'randomizeProductPrice'.**
-
-### 📦 _Dependy the Importer_ - **Import modułów, nowa zależność lub pakiet**
-
-Pokazuje miejsca, gdzie należy dopisać import modułu, zależności, pakietu lub potrzebę wykorzystania nowej zależności i jej zainstalowania.
-
-_Przykład:_ **Zaimportuj funkcję 'requestRouting' z modułu 'routing/routing.js'.**
-
-### 🔍 _Buggsy the Debugger_ - **Potencjalny problem**
-
-Pokazuje miejsca, gdzie należy dopisać fragment kodu, ponieważ go brakuje.
-
-_Przykład:_ **Brakuje tutaj funkcji, wyliczającej sumę produktów w koszyku.**
+Ścieżki do zasobów statycznych są poprawnie skonfigurowane dla środowiska Electron (public).
